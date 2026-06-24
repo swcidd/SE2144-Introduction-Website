@@ -1,20 +1,30 @@
 body {
-    background: rgba(13, 15, 26, 1)
+  background: rgba(43, 45, 66, 1);
+}
+
+.centerDiv {
+  display: flex;
+  justify-content: center;
 }
 
 .topSectionDiv {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .leftSideTopDiv {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .teamTitle {
+<<<<<<< HEAD
     color: rgba(237, 242, 244, 1);
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
     font-size: 260px;
+=======
+  color: rgba(237, 242, 244, 1);
+  font-size: 20px;
+>>>>>>> 3bb92e1a1d0719ea8b7d92aed86d73017b227432
 }
