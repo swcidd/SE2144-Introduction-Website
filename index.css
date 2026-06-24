@@ -1,4 +1,10 @@
+body {
+    background: rgba(7, 7, 17, 1)
+}
+
 .centerDiv {
     display: flex;
     justify-content: center;
 }
+
+
