@@ -6,3 +6,18 @@ body {
   display: flex;
   justify-content: center;
 }
+
+.topSectionDiv {
+  display: flex;
+  justify-content: center;
+}
+
+.leftSideTopDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.teamTitle {
+  color: rgba(237, 242, 244, 1);
+  font-size: 20px;
+}
