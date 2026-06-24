@@ -1,5 +1,29 @@
 body {
   background: rgba(43, 45, 66, 1);
+  height: 100%;
+  margin: 0;
+}
+
+/* PRESS START SCREEN */
+
+.press-start-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+#press-start-button {
+  font-size: 10rem;
+}
+
+/* CHARACTER SELECT SCREEN */
+
+.landing-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .centerDiv {
@@ -20,4 +44,8 @@ body {
 .teamTitle {
   color: rgba(237, 242, 244, 1);
   font-size: 20px;
+}
+
+.hidden {
+  display: none;
 }
