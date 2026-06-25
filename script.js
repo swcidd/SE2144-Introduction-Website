@@ -1,23 +1,34 @@
 const pressStartButton = document.getElementById("press-start-button");
-const pressStartScreen = document.getElementById("press-start-screen");
-const landingPage = document.getElementById("landing-page");
-const teamPortfolio = document.getElementById("team-portfolio");
-const josephPortfolio = document.getElementById("joseph-portfolio");
-const sherwinPortfolio = document.getElementById("sherwin-portfolio");
-const xanthPortfolio = document.getElementById("xanth-portfolio");
+let currentView = "pressStart";
 
-pressStartScreen.hidden = false;
-landingPage.hidden = true;
+const views = {
+  pressStart: document.getElementById("press-start-screen"),
+  landing: document.getElementById("landing-page"),
+  documentation: document.getElementById("documentation"),
+  teamPortfolio: document.getElementById("team-portfolio"),
+  josehPortfolio: document.getElementById("joseh-portfolio"),
+  sherwinPortfolio: document.getElementById("sherwin-portfolio"),
+  xanthPortfolio: document.getElementById("xanth-portfolio"),
+};
+
+function renderView() {
+  Object.entries(views).forEach(([name, element]) => {
+    element.hidden = name !== currentView;
+  });
+}
 
 pressStartButton.addEventListener("click", () => {
-  pressStartScreen.hidden = true;
-  landingPage.hidden = false;
+  currentView = "landing";
+  renderView();
 });
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Enter" && !pressStartScreen.hidden) {
+  if (event.key === "Enter" && currentView === "pressStart") {
     pressStartButton.click();
   }
 });
 
-/* DYNAMIC PAGES LOGIC */
+teamPortfolioButton.addEventListener("click", () => {
+  currentView = "teamPortfolio";
+  renderView();
+});
