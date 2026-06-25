@@ -40,8 +40,7 @@ body {
   border: none;
   cursor: pointer;
 }
-/* PRESS START BUTTON */
-/* PRESS START SCREEN */
+
 /* CHARACTER SELECT SCREEN */
 .landing-page {
   display: flex;
@@ -65,15 +64,10 @@ body {
 }
 
 .teamTitle {
-<<<<<<< HEAD
-    color: rgba(237, 242, 244, 1);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: 260px;
-=======
   color: rgba(237, 242, 244, 1);
-  font-size: 20px;
->>>>>>> 3bb92e1a1d0719ea8b7d92aed86d73017b227432
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  font-size: 260px;
 }
 
 .hidden {
