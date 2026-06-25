@@ -1,6 +1,10 @@
 const pressStartButton = document.getElementById("press-start-button");
 const pressStartScreen = document.getElementById("press-start-screen");
 const landingPage = document.getElementById("landing-page");
+const teamPortfolio = document.getElementById("team-portfolio");
+const josephPortfolio = document.getElementById("joseph-portfolio");
+const sherwinPortfolio = document.getElementById("sherwin-portfolio");
+const xanthPortfolio = document.getElementById("xanth-portfolio");
 
 pressStartScreen.hidden = false;
 landingPage.hidden = true;
@@ -15,3 +19,5 @@ document.addEventListener("keydown", (event) => {
     pressStartButton.click();
   }
 });
+
+/* DYNAMIC PAGES LOGIC */
