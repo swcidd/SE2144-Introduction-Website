@@ -2,6 +2,9 @@ body {
   background: rgba(43, 45, 66, 1);
   height: 100%;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 [hidden] {
   display: none !important;
@@ -69,5 +72,17 @@ body {
   color: rgba(237, 242, 244, 1);
   font-family: "Montserrat", sans-serif;
   font-weight: 900;
-  font-size: 10rem;
+  font-size: 5rem;
 }
+
+.teamContainer {
+  display: flex;
+  justify-content: center;
+  color: rgba(237, 242, 244, 1);
+  gap: 100px;
+  padding: 00px;
+  margin-top: auto;
+  margin-bottom: 40px;
+  
+}
+
