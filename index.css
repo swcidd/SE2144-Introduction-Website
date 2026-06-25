@@ -3,7 +3,9 @@ body {
   height: 100%;
   margin: 0;
 }
-
+[hidden] {
+  display: none !important;
+}
 /* PRESS START SCREEN */
 
 .press-start-screen {
@@ -68,8 +70,4 @@ body {
   font-family: "Montserrat", sans-serif;
   font-weight: 900;
   font-size: 260px;
-}
-
-.hidden {
-  display: none;
 }
