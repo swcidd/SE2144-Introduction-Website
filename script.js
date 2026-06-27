@@ -3,23 +3,23 @@ let currentView = "pressStart";
 
 const views = {
   pressStart: document.getElementById("press-start-screen"),
-  landing: document.getElementById("landing-page"),
+  characterSelect: document.getElementById("character-select"),
   documentation: document.getElementById("documentation"),
   teamPortfolio: document.getElementById("team-portfolio"),
-  josehPortfolio: document.getElementById("joseh-portfolio"),
+  josephPortfolio: document.getElementById("joseph-portfolio"),
   sherwinPortfolio: document.getElementById("sherwin-portfolio"),
   xanthPortfolio: document.getElementById("xanth-portfolio"),
 };
 
-function renderView() {
+function renderView(currentView) {
   Object.entries(views).forEach(([name, element]) => {
     element.hidden = name !== currentView;
   });
 }
 
+/* PAGE SWITCHER */
 pressStartButton.addEventListener("click", () => {
-  currentView = "landing";
-  renderView();
+  renderView("characterSelect");
 });
 
 document.addEventListener("keydown", (event) => {
@@ -28,7 +28,20 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+documentationButton.addEventListener("click", () => {
+  renderView("documentation");
+});
+
 teamPortfolioButton.addEventListener("click", () => {
-  currentView = "teamPortfolio";
-  renderView();
+  renderView("teamPortfolio");
+});
+
+josephPortfolioButton.addEventListener("click", () => {
+  renderView("josephPortfolio");
+});
+sherwinPortfolioButton.addEventListener("click", () => {
+  renderView("sherwinPortfolio");
+});
+xanthPortfolioButton.addEventListener("click", () => {
+  renderView("xanthPortfolio");
 });
