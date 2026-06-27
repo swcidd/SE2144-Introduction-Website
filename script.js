@@ -1,15 +1,30 @@
 const pressStartButton = document.getElementById("press-start-button");
 let currentView = "pressStart";
+const documentationButton = document.getElementById("documentation-button")
+const teamPortfolioButton =  document.getElementById("team-portfolio-button")
+const josephPortfolioButton = document.getElementById("joseph-banner")
+const sherwinPortfolioButton = document.getElementById("sherwin-banner")
+const xanthPortfolioButton = document.getElementById("xanth-banner")
+
 
 const views = {
-  pressStart: document.getElementById("press-start-screen"),
+  pressStartButton: document.getElementById("press-start-screen"),
   characterSelect: document.getElementById("character-select"),
-  documentation: document.getElementById("documentation"),
-  teamPortfolio: document.getElementById("team-portfolio"),
-  josephPortfolio: document.getElementById("joseph-portfolio"),
-  sherwinPortfolio: document.getElementById("sherwin-portfolio"),
-  xanthPortfolio: document.getElementById("xanth-portfolio"),
+  documentationButton: document.getElementById("documentation"),
+  teamPortfolioButton: document.getElementById("team-portfolio"),
+  josephPortfolioButton: document.getElementById("joseph-portfolio"),
+  sherwinPortfolioButton: document.getElementById("sherwin-portfolio"),
+  xanthPortfolioButton: document.getElementById("xanth-portfolio"),
 };
+
+const buttonViewsMapper = {
+  documentationButton: document.getElementById("documentation-button"),
+  teamPortfolioButton: document.getElementById("team-portfolio-button"),
+  josephPortfolioButton: document.getElementById("joseph-banner"),
+  sherwinPortfolioButton: document.getElementById("sherwin-banner"),
+  xanthPortfolioButton: document.getElementById("xanth-banner"),
+};
+
 
 function renderView(currentView) {
   Object.entries(views).forEach(([name, element]) => {
@@ -18,9 +33,6 @@ function renderView(currentView) {
 }
 
 /* PAGE SWITCHER */
-pressStartButton.addEventListener("click", () => {
-  renderView("characterSelect");
-});
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Enter" && currentView === "pressStart") {
@@ -28,20 +40,22 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-documentationButton.addEventListener("click", () => {
-  renderView("documentation");
+element.addEventListener("click", () => {
+  renderView(currentView);
 });
 
-teamPortfolioButton.addEventListener("click", () => {
-  renderView("teamPortfolio");
-});
+function pageNavigator(element, currentView) {
+  Object.entries(views).forEach(([name, element]) => {
+    element.hidden = name !== currentView;
+    
+  element.addEventListener("click", () => {
+    renderView(currentView);
+  });
+}
 
-josephPortfolioButton.addEventListener("click", () => {
-  renderView("josephPortfolio");
-});
-sherwinPortfolioButton.addEventListener("click", () => {
-  renderView("sherwinPortfolio");
-});
-xanthPortfolioButton.addEventListener("click", () => {
-  renderView("xanthPortfolio");
-});
+pageNavigator(pressStartButton, "characterSelect");
+pageNavigator(documentationButton, "documentation");
+pageNavigator(teamPortfolioButton, "teamPortfolio");
+pageNavigator(josephPortfolioButton, "josephPortfolio");
+pageNavigator(sherwinPortfolioButton, "sherwinPortfolio");
+pageNavigator(xanthPortfolioButton, "xanthPortfolio");
