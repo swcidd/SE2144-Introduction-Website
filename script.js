@@ -26,31 +26,22 @@ const PRESS_START_TO_CHARACTER_SELECT_DELAY_MS = 700;
 const CHARACTER_SELECT_TO_PORTFOLIO_DELAY_MS = 1500;
 const CHARACTER_SELECT_INTRO_DURATION_MS = 1100;
 
+const TRANSPARENT_PIXEL =
+  "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
+const PRESS_START_AUDIO_SRC = "src/assets/audio/GAME_SE_23.mp3";
+const BANNER_CLICK_AUDIO_SRC = "src/assets/audio/GAME_SE_08.mp3";
+const CHARACTER_SELECT_AUDIO_SRC =
+  "src/assets/audio/Street Fighter X Tekken Main Menu OST_compressed.mp3";
+
 const characterButtons = Array.from(document.querySelectorAll(".members"));
 const pressStartButton = document.querySelector("#press-start-button");
-const pressStartAudio = new Audio("src/assets/audio/GAME_SE_23.wav");
-const bannerClickAudio = new Audio("src/assets/audio/GAME_SE_08.wav");
-const characterSelectAudio = new Audio(
-  "src/assets/audio/Street Fighter X Tekken Main Menu OST.mp3",
-);
 
-pressStartAudio.preload = "auto";
-bannerClickAudio.preload = "auto";
-characterSelectAudio.preload = "auto";
-characterSelectAudio.loop = true;
+let characterSelectAudio = null;
 
-function playPressStartAudio() {
-  pressStartAudio.currentTime = 0;
+function playOneShotSound(src) {
+  const sound = new Audio(src);
+  sound.preload = "none";
 
-  const playPromise = pressStartAudio.play();
-
-  if (playPromise?.catch) {
-    playPromise.catch(() => {});
-  }
-}
-
-function playBannerClickAudio() {
-  const sound = bannerClickAudio.cloneNode(true);
   const playPromise = sound.play();
 
   if (playPromise?.catch) {
@@ -58,10 +49,29 @@ function playBannerClickAudio() {
   }
 }
 
-function playCharacterSelectAudio() {
-  characterSelectAudio.currentTime = 0;
+function playPressStartAudio() {
+  playOneShotSound(PRESS_START_AUDIO_SRC);
+}
 
-  const playPromise = characterSelectAudio.play();
+function playBannerClickAudio() {
+  playOneShotSound(BANNER_CLICK_AUDIO_SRC);
+}
+
+function getCharacterSelectAudio() {
+  if (!characterSelectAudio) {
+    characterSelectAudio = new Audio(CHARACTER_SELECT_AUDIO_SRC);
+    characterSelectAudio.loop = true;
+    characterSelectAudio.preload = "none";
+  }
+
+  return characterSelectAudio;
+}
+
+function playCharacterSelectAudio() {
+  const audio = getCharacterSelectAudio();
+  audio.currentTime = 0;
+
+  const playPromise = audio.play();
 
   if (playPromise?.catch) {
     playPromise.catch(() => {});
@@ -69,8 +79,22 @@ function playCharacterSelectAudio() {
 }
 
 function stopCharacterSelectAudio() {
+  if (!characterSelectAudio) return;
+
   characterSelectAudio.pause();
   characterSelectAudio.currentTime = 0;
+}
+
+function initializeCharacterPortraits() {
+  characterButtons.forEach((button) => {
+    const portrait = button.querySelector("img");
+
+    if (!portrait || portrait.dataset.loaded === "true") return;
+
+    portrait.src = button.dataset.unselectedSrc || TRANSPARENT_PIXEL;
+    portrait.decoding = "async";
+    portrait.dataset.loaded = "true";
+  });
 }
 
 //nav buttons dict
@@ -99,6 +123,7 @@ function setView(viewName) {
   });
 
   if (viewName === View.CHARACTER_SELECT) {
+    initializeCharacterPortraits();
     playCharacterSelectAudio();
 
     if (characterSelectIntroTimeoutId !== null) {
