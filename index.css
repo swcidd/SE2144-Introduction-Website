@@ -60,13 +60,12 @@ body {
 
 /* CHARACTER SELECT SCREEN */
 #character-select-screen {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  display: block;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   overflow: hidden;
+  background-color: black;
 }
 
 #fade-overlay {
@@ -81,10 +80,11 @@ body {
 }
 
 #character-select-container {
-  height: 100vh;
   display: flex;
   width: 100%;
-  z-index: 10;
+  height: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 .character-banner {
@@ -94,14 +94,16 @@ body {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  overflow: hidden;
   transition: transform 0.2s ease-in-out;
 }
 
 .character-banner:hover {
-  transform: scaleX(1.05);
+  transform: scale(1.02);
 }
 
 .members {
+  display: block;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -109,6 +111,21 @@ body {
   border: none;
   background: none;
   cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease,
+    opacity 0.2s ease;
+  opacity: 0.85;
+}
+
+.members.selected {
+  opacity: 1;
+  transform: scale(1.03);
+  filter: none;
+}
+
+.members:not(.selected) {
+  filter: saturate(0.85) contrast(0.95);
 }
 
 .members img {
@@ -116,6 +133,8 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
+  user-select: none;
+  pointer-events: none;
 }
 
 /* PORTFOLIO SECTIONS */

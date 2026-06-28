@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-   <head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Team Portfolio Website | The GOAT</title>
@@ -9,24 +9,48 @@
   </head>
   <body>
     <div class="press-start-screen" id="press-start-screen">
-      <button id="press-start-button">PRESS START</button>
+      <button id="press-start-button" type="button">PRESS START</button>
     </div>
     <div id="fade-overlay"></div>
     <section id="character-select-screen" hidden>
       <div id="character-select-container">
         <div class="character-banner" id="joseph-banner-button">
-          <button class="members">
-            <img src="src/assets/joseph.jpeg" alt="Joseph_Mahito_Portrait" />
+          <button
+            class="members"
+            type="button"
+            data-unselected-src="src/assets/joseph_unselected_portrait.png"
+            data-selected-src="src/assets/joseph.jpeg"
+          >
+            <img
+              src="src/assets/joseph_unselected_portrait.png"
+              alt="Joseph_Mahito_Portrait"
+            />
           </button>
         </div>
         <div class="character-banner" id="sherwin-banner-button">
-          <button class="members">
-            <img src="src/assets/sherwin.jpeg" alt="Sherwin_Todo_Portrait" />
+          <button
+            class="members"
+            type="button"
+            data-unselected-src="src/assets/sherwin_unselected_portrait.png"
+            data-selected-src="src/assets/sherwin.jpeg"
+          >
+            <img
+              src="src/assets/sherwin_unselected_portrait.png"
+              alt="Sherwin_Todo_Portrait"
+            />
           </button>
         </div>
         <div class="character-banner" id="xanth-banner-button">
-          <button class="members">
-            <img src="src/assets/xanth.jpeg" alt="Xanth_Yuji_Portrait" />
+          <button
+            class="members"
+            type="button"
+            data-unselected-src="src/assets/xanth_unselected_portrait.png"
+            data-selected-src="src/assets/xanth.jpeg"
+          >
+            <img
+              src="src/assets/xanth_unselected_portrait.png"
+              alt="Xanth_Yuji_Portrait"
+            />
           </button>
         </div>
       </div>
@@ -35,8 +59,5 @@
     <section id="joseph-portfolio" hidden><h1>JOSEPH</h1></section>
     <section id="sherwin-portfolio" hidden><h1>SHERWIN</h1></section>
     <section id="xanth-portfolio" hidden><h1>XANTH</h1></section>
-
-
-
-  </div>
+  </body>
 </html>
