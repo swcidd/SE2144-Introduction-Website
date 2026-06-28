@@ -1,47 +1,42 @@
 <!doctype html>
 <html lang="en">
-  <body>
-    <section id="landing-page" hidden>
-      <section id="hero-banner">
-        <div class="topSectionDiv">
-          <div class="leftSideTopDiv">
-            <h1 class="teamTitle">dreamteam.jsx</h1>
-          </div>
-        </div>
-      </section>
-    </section>
-    <section id="documentation"></section>
-    <section id="team-portfolio"></section>
-    <section id="joseph-portfolio"><h1>JOSEPH</h1></section>
-    <section id="sherwin-portfolio"><h1>SHERWIN</h1></section>
-    <section id="xanth-portfolio"><h1>XANTH</h1></section>
-  </body>
-  <head>
+   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Team Portfolio Website | The GOAT</title>
     <link rel="stylesheet" href="index.css" />
     <script src="script.js" defer></script>
   </head>
-
   <body>
-    <div class = "titleDiv">
-      <p class="teamTitle">Dreamteam.jsx</p>
-      <button id="startButton">Lets larp</button>
+    <div class="press-start-screen" id="press-start-screen">
+      <button id="press-start-button">PRESS START</button>
     </div>
-
     <div id="fade-overlay"></div>
+    <section id="character-select-screen" hidden>
+      <div id="character-select-container">
+        <div class="character-banner" id="joseph-banner-button">
+          <button class="members">
+            <img src="src/assets/joseph.jpeg" alt="Joseph_Mahito_Portrait" />
+          </button>
+        </div>
+        <div class="character-banner" id="sherwin-banner-button">
+          <button class="members">
+            <img src="src/assets/sherwin.jpeg" alt="Sherwin_Todo_Portrait" />
+          </button>
+        </div>
+        <div class="character-banner" id="xanth-banner-button">
+          <button class="members">
+            <img src="src/assets/xanth.jpeg" alt="Xanth_Yuji_Portrait" />
+          </button>
+        </div>
+      </div>
+    </section>
 
-    <div class="members">
-      <button class="member1">
-        <img src="src/assets/joseph.jpeg" alt="Joseph_Mahito_Portrait" />
-      </button>
-      <button class="member2">
-        <img src="src/assets/sherwin.jpeg" alt="Sherwin_Todo_Portrait" />
-      </button>
-      <button class="member3">
-        <img src="src/assets/xanth.jpeg" alt="Xanth_Yuji_Portrait" />
-      </button>
-    </div>
-  </body>
+    <section id="joseph-portfolio" hidden><h1>JOSEPH</h1></section>
+    <section id="sherwin-portfolio" hidden><h1>SHERWIN</h1></section>
+    <section id="xanth-portfolio" hidden><h1>XANTH</h1></section>
+
+
+
+  </div>
 </html>
