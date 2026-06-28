@@ -6,6 +6,7 @@ const josephPortfolio = document.getElementById("joseph-portfolio");
 const sherwinPortfolio = document.getElementById("sherwin-portfolio");
 const xanthPortfolio = document.getElementById("xanth-portfolio");
 
+// pages/views array
 const views = {
   PRESS_START: pressStartScreen,
   CHARACTER_SELECT: characterSelectScreen,
@@ -25,6 +26,7 @@ const View = {
 const INITIAL_VIEW = View.PRESS_START;
 let currentView = INITIAL_VIEW;
 
+//nav buttons array
 const navButtons = [
   { button: "#press-start-button", page: View.CHARACTER_SELECT },
   { button: "#joseph-banner-button", page: View.JOSEPH },
@@ -32,6 +34,7 @@ const navButtons = [
   { button: "#xanth-banner-button", page: View.XANTH },
 ];
 
+//func for setting view
 function setView(viewName) {
   if (!(viewName in views)) {
     console.warn(`Unknown view: ${viewName}`);
@@ -45,6 +48,7 @@ function setView(viewName) {
   });
 }
 
+//if nav buttons r pressed
 navButtons.forEach(({ button, page }) => {
   const buttonElement = document.querySelector(button);
 
@@ -55,6 +59,7 @@ navButtons.forEach(({ button, page }) => {
   });
 });
 
+//enter is pressed
 document.addEventListener("keydown", (event) => {
   if (event.key === "Enter" && currentView === View.PRESS_START) {
     const pressStartButton = document.querySelector("#press-start-button");
