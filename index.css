@@ -14,6 +14,13 @@ header {
   gap: 2rem;
 }
 
+.titleDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .teamTitle {
   color: white;
   display: flex;
