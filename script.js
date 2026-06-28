@@ -38,11 +38,9 @@ const navButtons = [
 function setView(viewName) {
   if (viewName.endsWith(".html")) {
     window.location.href = viewName;
-
   } else if (!(viewName in views)) {
     console.warn(`Unknown view: ${viewName}`);
     return;
-
   }
   currentView = viewName;
 
@@ -51,7 +49,6 @@ function setView(viewName) {
     element.hidden = name !== viewName;
   });
 }
-
 
 //if nav buttons r pressed
 navButtons.forEach(({ button, page }) => {
@@ -76,6 +73,27 @@ navButtons.forEach(({ button, page }) => {
     }, getViewSwitchDelay(page));
   });
 });
+
+function setCharacterSelection(activeButton) {
+  characterButtons.forEach((button) => {
+    const portrait = button.querySelector("img");
+    const isActive = button === activeButton;
+
+    button.classList.toggle("selected", isActive);
+
+    if (!portrait) return;
+
+    portrait.src = isActive
+      ? button.dataset.selectedSrc
+      : button.dataset.unselectedSrc;
+  });
+}
+
+function getViewSwitchDelay(nextView) {
+  return nextView === View.CHARACTER_SELECT
+    ? PRESS_START_TO_CHARACTER_SELECT_DELAY_MS
+    : CHARACTER_SELECT_TO_PORTFOLIO_DELAY_MS;
+}
 
 //enter is pressed
 document.addEventListener("keydown", (event) => {
