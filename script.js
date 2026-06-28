@@ -28,6 +28,50 @@ const CHARACTER_SELECT_INTRO_DURATION_MS = 1100;
 
 const characterButtons = Array.from(document.querySelectorAll(".members"));
 const pressStartButton = document.querySelector("#press-start-button");
+const pressStartAudio = new Audio("src/assets/audio/GAME_SE_23.wav");
+const bannerClickAudio = new Audio("src/assets/audio/GAME_SE_08.wav");
+const characterSelectAudio = new Audio(
+  "src/assets/audio/Street Fighter X Tekken Main Menu OST.mp3",
+);
+
+pressStartAudio.preload = "auto";
+bannerClickAudio.preload = "auto";
+characterSelectAudio.preload = "auto";
+characterSelectAudio.loop = true;
+
+function playPressStartAudio() {
+  pressStartAudio.currentTime = 0;
+
+  const playPromise = pressStartAudio.play();
+
+  if (playPromise?.catch) {
+    playPromise.catch(() => {});
+  }
+}
+
+function playBannerClickAudio() {
+  const sound = bannerClickAudio.cloneNode(true);
+  const playPromise = sound.play();
+
+  if (playPromise?.catch) {
+    playPromise.catch(() => {});
+  }
+}
+
+function playCharacterSelectAudio() {
+  characterSelectAudio.currentTime = 0;
+
+  const playPromise = characterSelectAudio.play();
+
+  if (playPromise?.catch) {
+    playPromise.catch(() => {});
+  }
+}
+
+function stopCharacterSelectAudio() {
+  characterSelectAudio.pause();
+  characterSelectAudio.currentTime = 0;
+}
 
 //nav buttons dict
 const navButtons = [
@@ -40,7 +84,9 @@ const navButtons = [
 //func for setting view
 function setView(viewName) {
   if (viewName.endsWith(".html")) {
+    stopCharacterSelectAudio();
     window.location.href = viewName;
+    return;
   } else if (!(viewName in views)) {
     console.warn(`Unknown view: ${viewName}`);
     return;
@@ -53,6 +99,8 @@ function setView(viewName) {
   });
 
   if (viewName === View.CHARACTER_SELECT) {
+    playCharacterSelectAudio();
+
     if (characterSelectIntroTimeoutId !== null) {
       clearTimeout(characterSelectIntroTimeoutId);
     }
@@ -78,6 +126,7 @@ navButtons.forEach(({ button, page }) => {
 
   buttonElement.addEventListener("click", () => {
     if (button === "#press-start-button" && pressStartButton) {
+      playPressStartAudio();
       pressStartButton.classList.remove("is-flashing");
       void pressStartButton.offsetWidth;
       pressStartButton.classList.add("is-flashing");
@@ -90,6 +139,7 @@ navButtons.forEach(({ button, page }) => {
     const memberButton = buttonElement.querySelector(".members");
 
     if (memberButton) {
+      playBannerClickAudio();
       setCharacterSelection(memberButton);
     }
 
