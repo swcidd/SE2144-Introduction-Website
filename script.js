@@ -2,31 +2,25 @@ const pressStartScreen = document.getElementById("press-start-screen");
 const characterSelectScreen = document.getElementById(
   "character-select-screen",
 );
-const josephPortfolio = document.getElementById("joseph-portfolio");
-const sherwinPortfolio = document.getElementById("sherwin-portfolio");
-const xanthPortfolio = document.getElementById("xanth-portfolio");
 
-// pages/views array
+// viewss array
 const views = {
   PRESS_START: pressStartScreen,
   CHARACTER_SELECT: characterSelectScreen,
-  JOSEPH: josephPortfolio,
-  SHERWIN: sherwinPortfolio,
-  XANTH: xanthPortfolio,
 };
 
 const View = {
   PRESS_START: "PRESS_START",
   CHARACTER_SELECT: "CHARACTER_SELECT",
-  JOSEPH: "JOSEPH",
-  SHERWIN: "SHERWIN",
-  XANTH: "XANTH",
+  JOSEPH: "./joseph.html",
+  SHERWIN: "./sherwin.html",
+  XANTH: "./xanth.html",
 };
 
 const INITIAL_VIEW = View.PRESS_START;
 let currentView = INITIAL_VIEW;
 
-//nav buttons array
+//nav buttons dict
 const navButtons = [
   { button: "#press-start-button", page: View.CHARACTER_SELECT },
   { button: "#joseph-banner-button", page: View.JOSEPH },
@@ -36,9 +30,13 @@ const navButtons = [
 
 //func for setting view
 function setView(viewName) {
-  if (!(viewName in views)) {
+  if (viewName.endsWith(".html")) {
+    window.location.href = viewName;
+
+  } else if (!(viewName in views)) {
     console.warn(`Unknown view: ${viewName}`);
     return;
+
   }
   currentView = viewName;
 
@@ -48,11 +46,12 @@ function setView(viewName) {
   });
 }
 
+
 //if nav buttons r pressed
 navButtons.forEach(({ button, page }) => {
   const buttonElement = document.querySelector(button);
 
-  if (!buttonElement) return;
+  if (!buttonElement) return; // akigan ta sini kun si sir paul pero its correct naman
 
   buttonElement.addEventListener("click", () => {
     setView(page);
