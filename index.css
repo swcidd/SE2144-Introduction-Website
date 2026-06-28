@@ -63,6 +63,12 @@ body {
   filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6));
 }
 
+#press-start-button.is-flashing {
+  animation:
+    breathe 2s ease-in-out infinite,
+    press-start-flash 700ms ease-out 1;
+}
+
 @keyframes breathe {
   0% {
     transform: skewX(-12deg) rotate(-3deg) scale(1);
@@ -79,6 +85,28 @@ body {
     transform: skewX(-12deg) rotate(-3deg) scale(1);
     opacity: 0.8;
     filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6));
+  }
+}
+
+@keyframes press-start-flash {
+  0% {
+    opacity: 0.85;
+    text-shadow:
+      0 0 10px rgba(255, 255, 255, 0.4),
+      0 0 18px rgba(255, 221, 0, 0.2);
+  }
+  35% {
+    opacity: 1;
+    text-shadow:
+      0 0 14px rgba(255, 255, 255, 0.9),
+      0 0 28px rgba(255, 221, 0, 0.8),
+      0 0 40px rgba(227, 28, 35, 0.5);
+  }
+  100% {
+    opacity: 0.8;
+    text-shadow:
+      0 0 10px rgba(255, 255, 255, 0.4),
+      0 0 18px rgba(255, 221, 0, 0.2);
   }
 }
 
@@ -111,6 +139,22 @@ body {
   z-index: 2;
 }
 
+#character-select-screen.is-entering .character-banner {
+  opacity: 0;
+}
+
+#character-select-screen.is-entering #joseph-banner-button {
+  animation: slide-in-from-bottom 680ms ease-out 0ms forwards;
+}
+
+#character-select-screen.is-entering #sherwin-banner-button {
+  animation: slide-in-from-top 680ms ease-out 170ms forwards;
+}
+
+#character-select-screen.is-entering #xanth-banner-button {
+  animation: slide-in-from-bottom 680ms ease-out 340ms forwards;
+}
+
 .character-banner {
   flex: 1;
   height: 100%;
@@ -124,6 +168,28 @@ body {
 
 .character-banner:hover {
   transform: scale(1.02);
+}
+
+@keyframes slide-in-from-bottom {
+  0% {
+    opacity: 0;
+    transform: translateY(16%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-from-top {
+  0% {
+    opacity: 0;
+    transform: translateY(-16%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .members {

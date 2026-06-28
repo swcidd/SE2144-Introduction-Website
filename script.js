@@ -20,11 +20,14 @@ const View = {
 const INITIAL_VIEW = View.PRESS_START;
 let currentView = INITIAL_VIEW;
 let viewSwitchTimeoutId = null;
+let characterSelectIntroTimeoutId = null;
 
-const PRESS_START_TO_CHARACTER_SELECT_DELAY_MS = 0;
+const PRESS_START_TO_CHARACTER_SELECT_DELAY_MS = 700;
 const CHARACTER_SELECT_TO_PORTFOLIO_DELAY_MS = 1500;
+const CHARACTER_SELECT_INTRO_DURATION_MS = 1100;
 
 const characterButtons = Array.from(document.querySelectorAll(".members"));
+const pressStartButton = document.querySelector("#press-start-button");
 
 //nav buttons dict
 const navButtons = [
@@ -48,6 +51,23 @@ function setView(viewName) {
     if (!element) return;
     element.hidden = name !== viewName;
   });
+
+  if (viewName === View.CHARACTER_SELECT) {
+    if (characterSelectIntroTimeoutId !== null) {
+      clearTimeout(characterSelectIntroTimeoutId);
+    }
+
+    window.requestAnimationFrame(() => {
+      characterSelectScreen.classList.remove("is-entering");
+      void characterSelectScreen.offsetWidth;
+      characterSelectScreen.classList.add("is-entering");
+
+      characterSelectIntroTimeoutId = window.setTimeout(() => {
+        characterSelectScreen.classList.remove("is-entering");
+        characterSelectIntroTimeoutId = null;
+      }, CHARACTER_SELECT_INTRO_DURATION_MS);
+    });
+  }
 }
 
 //if nav buttons r pressed
@@ -57,6 +77,16 @@ navButtons.forEach(({ button, page }) => {
   if (!buttonElement) return; // akigan ta sini kun si sir paul pero its correct naman
 
   buttonElement.addEventListener("click", () => {
+    if (button === "#press-start-button" && pressStartButton) {
+      pressStartButton.classList.remove("is-flashing");
+      void pressStartButton.offsetWidth;
+      pressStartButton.classList.add("is-flashing");
+
+      window.setTimeout(() => {
+        pressStartButton.classList.remove("is-flashing");
+      }, PRESS_START_TO_CHARACTER_SELECT_DELAY_MS);
+    }
+
     const memberButton = buttonElement.querySelector(".members");
 
     if (memberButton) {
