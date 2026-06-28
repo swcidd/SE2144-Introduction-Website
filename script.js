@@ -19,6 +19,12 @@ const View = {
 
 const INITIAL_VIEW = View.PRESS_START;
 let currentView = INITIAL_VIEW;
+let viewSwitchTimeoutId = null;
+
+const PRESS_START_TO_CHARACTER_SELECT_DELAY_MS = 0;
+const CHARACTER_SELECT_TO_PORTFOLIO_DELAY_MS = 1500;
+
+const characterButtons = Array.from(document.querySelectorAll(".members"));
 
 //nav buttons dict
 const navButtons = [
@@ -54,7 +60,20 @@ navButtons.forEach(({ button, page }) => {
   if (!buttonElement) return; // akigan ta sini kun si sir paul pero its correct naman
 
   buttonElement.addEventListener("click", () => {
-    setView(page);
+    const memberButton = buttonElement.querySelector(".members");
+
+    if (memberButton) {
+      setCharacterSelection(memberButton);
+    }
+
+    if (viewSwitchTimeoutId !== null) {
+      clearTimeout(viewSwitchTimeoutId);
+    }
+
+    viewSwitchTimeoutId = window.setTimeout(() => {
+      setView(page);
+      viewSwitchTimeoutId = null;
+    }, getViewSwitchDelay(page));
   });
 });
 
