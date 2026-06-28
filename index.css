@@ -4,6 +4,12 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "Martyric";
+  src: url("src/Fonts/Martyric_PersonalUse.ttf") format("truetype");
+  font-display: swap;
+}
+
 html,
 body {
   width: 100%;
@@ -103,6 +109,7 @@ body {
 }
 
 .members {
+  position: relative;
   display: block;
   width: 100%;
   height: 100%;
@@ -120,7 +127,6 @@ body {
 
 .members.selected {
   opacity: 1;
-  transform: scale(1.03);
   filter: none;
 }
 
@@ -128,13 +134,76 @@ body {
   filter: saturate(0.85) contrast(0.95);
 }
 
+.members::after {
+  content: attr(data-character-name);
+  position: absolute;
+  left: 1.75rem;
+  bottom: 1.75rem;
+  z-index: 3;
+  color: rgba(255, 255, 255, 0.95);
+  font-family: "Martyric", sans-serif;
+  font-size: clamp(1.75rem, 2.5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 8px rgba(0, 0, 0, 0.9),
+    0 0 16px rgba(0, 0, 0, 0.7);
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease,
+    text-shadow 0.2s ease;
+  pointer-events: none;
+}
+
+.character-banner:hover .members::after,
+.members.selected::after {
+  color: #ffffff;
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.6),
+    0 0 24px rgba(255, 255, 255, 0.25);
+  transform: translateX(0.75rem);
+}
+
+.members::before {
+  content: "";
+  position: absolute;
+  left: 1.2rem;
+  bottom: 1.2rem;
+  z-index: 2;
+  width: clamp(9rem, 48%, 16rem);
+  height: clamp(3rem, 6.5vw, 4rem);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0.28) 45%,
+    rgba(0, 0, 0, 0.12) 75%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  filter: blur(14px);
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
 .members img {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
   user-select: none;
   pointer-events: none;
+  transition:
+    transform 0.25s ease,
+    filter 0.25s ease;
+}
+
+.character-banner:hover .members img,
+.members.selected img {
+  transform: translateX(1.4rem) scale(1.03);
+  filter: brightness(1.08) saturate(1.08);
 }
 
 /* PORTFOLIO SECTIONS */

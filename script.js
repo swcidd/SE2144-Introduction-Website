@@ -25,6 +25,12 @@ const View = {
 
 const INITIAL_VIEW = View.PRESS_START;
 let currentView = INITIAL_VIEW;
+let viewSwitchTimeoutId = null;
+
+const PRESS_START_TO_CHARACTER_SELECT_DELAY_MS = 0;
+const CHARACTER_SELECT_TO_PORTFOLIO_DELAY_MS = 1500;
+
+const characterButtons = Array.from(document.querySelectorAll(".members"));
 
 //nav buttons array
 const navButtons = [
@@ -48,6 +54,27 @@ function setView(viewName) {
   });
 }
 
+function setCharacterSelection(activeButton) {
+  characterButtons.forEach((button) => {
+    const portrait = button.querySelector("img");
+    const isActive = button === activeButton;
+
+    button.classList.toggle("selected", isActive);
+
+    if (!portrait) return;
+
+    portrait.src = isActive
+      ? button.dataset.selectedSrc
+      : button.dataset.unselectedSrc;
+  });
+}
+
+function getViewSwitchDelay(nextView) {
+  return nextView === View.CHARACTER_SELECT
+    ? PRESS_START_TO_CHARACTER_SELECT_DELAY_MS
+    : CHARACTER_SELECT_TO_PORTFOLIO_DELAY_MS;
+}
+
 //if nav buttons r pressed
 navButtons.forEach(({ button, page }) => {
   const buttonElement = document.querySelector(button);
@@ -55,7 +82,20 @@ navButtons.forEach(({ button, page }) => {
   if (!buttonElement) return;
 
   buttonElement.addEventListener("click", () => {
-    setView(page);
+    const memberButton = buttonElement.querySelector(".members");
+
+    if (memberButton) {
+      setCharacterSelection(memberButton);
+    }
+
+    if (viewSwitchTimeoutId !== null) {
+      clearTimeout(viewSwitchTimeoutId);
+    }
+
+    viewSwitchTimeoutId = window.setTimeout(() => {
+      setView(page);
+      viewSwitchTimeoutId = null;
+    }, getViewSwitchDelay(page));
   });
 });
 
