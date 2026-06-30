@@ -3,32 +3,31 @@
   <head>
     <title>Xanth's Portfolio</title>
     <link rel="stylesheet" href="index.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   </head>
+  
   <body class="xanth-portfolio-body">
     <header>
-      <a href="#" class="name">Xanth</a>
-
-      <nav>
-        <a href="#" class="tabs">Home</a>
-        <a href "#" >Hobbies</a>
-        <a href "#" >Education</a>
-        <a href "#" >Insights</a>
-      </nav>
-
+      <h1>Xanth</h1>
+      <p>2nd Software Engineering Student</p>
     </header>
 
-    <section class="home">
-      <div class="profile-img">
-        <img src="psyopcat.webp" alt="">
-      </div>
-      <div class="home-content">
-        <h1>Xanth Reign Palmes</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero quae, vel ad incidunt quasi eum? Placeat unde harum in deserunt magnam itaque, minus repellat nisi ipsum porro. Quod, architecto rem.</p>
-        <div class="social-icons">
-          <a href="#"><i class="fa-brands fa-github"></i></a>
-        </div>
-      </div>
-    </section>
+    <div class="tab">
+      <button class="tablinks" onclick="openTab(event, 'About me')">About me</button>
+      <button class="tablinks" onclick="openTab(event, 'Hobbies')">Hobbies</button>
+      <button class="tablinks" onclick="openTab(event, 'Insights')">Insights</button>
+    </div>
+
+    <div id="About me" class="tabContent">
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis nulla, placeat quisquam excepturi ipsa rem ea exercitationem, esse possimus temporibus error rerum harum sapiente laboriosam similique libero dolore dolorem amet.</p>
+    </div>
+
+    <div id="Hobbies" class="tabContent">
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis nulla, placeat quisquam excepturi ipsa rem ea exercitationem, esse possimus temporibus error rerum harum sapiente laboriosam similique libero dolore dolorem amet.</p>
+    </div>
+
+    <div id="Insights" class="tabContent">
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis nulla, placeat quisquam excepturi ipsa rem ea exercitationem, esse possimus temporibus error rerum harum sapiente laboriosam similique libero dolore dolorem amet.</p>
+    </div>
+
   </body>
 </html>
