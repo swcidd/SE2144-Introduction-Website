@@ -29,7 +29,8 @@ const CHARACTER_SELECT_INTRO_DURATION_MS = 1100;
 const TRANSPARENT_PIXEL =
   "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
 const PRESS_START_AUDIO_SRC = "src/assets/audio/GAME_SE_23.mp3";
-const BANNER_CLICK_AUDIO_SRC = "src/assets/audio/GAME_SE_08.mp3";
+const CHARACTER_SELECT_HOVER_AUDIO_SRC = "src/assets/audio/GAME_SE_08.mp3";
+const CHARACTER_SELECT_CLICK_AUDIO_SRC = "src/assets/audio/GAME_SE_00.mp3";
 const CHARACTER_SELECT_AUDIO_SRC =
   "src/assets/audio/Street Fighter X Tekken Main Menu OST_compressed.mp3";
 
@@ -53,8 +54,12 @@ function playPressStartAudio() {
   playOneShotSound(PRESS_START_AUDIO_SRC);
 }
 
-function playBannerClickAudio() {
-  playOneShotSound(BANNER_CLICK_AUDIO_SRC);
+function playCharacterSelectHoverAudio() {
+  playOneShotSound(CHARACTER_SELECT_HOVER_AUDIO_SRC);
+}
+
+function playCharacterSelectClickAudio() {
+  playOneShotSound(CHARACTER_SELECT_CLICK_AUDIO_SRC);
 }
 
 function getCharacterSelectAudio() {
@@ -164,7 +169,7 @@ navButtons.forEach(({ button, page }) => {
     const memberButton = buttonElement.querySelector(".members"); //why
 
     if (memberButton) {
-      playBannerClickAudio();
+      playCharacterSelectClickAudio();
       //setCharacterSelection(memberButton);
     }
 
@@ -203,6 +208,8 @@ function initializeCharacterHoverEffects() {
     if (!portrait) return;
 
     button.addEventListener("mouseenter", () => {
+      playCharacterSelectHoverAudio();
+
       if (button.dataset.selectedSrc) {
         portrait.src = button.dataset.selectedSrc;
       }
