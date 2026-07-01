@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap');
+
+body {
+   display: 		         flex;
+   flex-direction: 	      column;
+   align-items: 	         center;
+   justify-content: 	      center;
+   background-image: 	   linear-gradient(to bottom, rgba(10,0,20,1), rgba(30,10,20,1));
+   font-family: 	         'JetBrains Mono', 'Courier New', Courier, monospace;
+   overflow-y:             scroll;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+
+.titleSection {
+   display: 		         flex;
+   flex-direction: 	      column;
+   align-items: 	         center;
+   justify-content: 	      center;
+}
+
+.titleText {
+   display: 		         flex;
+   flex-direction: 	      column;
+   align-items: 	         center;
+   justify-content: 	      center;
+
+   font-size: 		         15px;
+   color: 		            rgba(255,125,255,1);
+}
+
+.justifyText {
+   text-align: 		      center;
+}
+
+.technologiesSection {
+   display: 		         flex;
+   flex-direction: 	      column;
+   align-items: 	         center;
+   justify-content: 	      center;
+
+}
+
+.technologiesContainer {
+   display: 		         grid;
+   width: 		            250px;
+   height: 		            80px;
+   grid-template-columns:  auto auto auto auto auto auto;
+   align-items: 	         center;
+   justify-content: 	      center;
+   gap: 		               2px 8px
+}
+
+.technologiesContainer div {
+   width: 		            100px;
+   height: 		            30px;
+   display: 		         flex;
+   align-items: 	         center;
+   justify-content: 	      center;
+   border: 		            1px solid rgba(255,150,255,0.2);
+   border-radius: 	      3px;
+   background-color: 	   rgba(255,190,255,0.1);
+   color: 		            #fff;
+}
+
+.projectsSection {
+   display:                flex;
+   flex-direction: 	      column;
+   align-items: 	         center;
+   justify-content: 	      center;
+}
+
+.projectsGridContainer {
+   display:                grid;
+   grid-template-columns:  auto auto auto;
+   align-items:            center;
+   justify-content:        center;
+   gap:                    12px 12px;
+}
+
+.projectsGridContainer div {
+   display:                flex;
+   align-items:            center;
+   justify-content:        center;
+   height:                 240px;
+   width:                  430px;
+   border-radius:          5px;
+   border:                 1px solid rgba(60,30,65,1);
+   background-color: 	   rgba(255,190,255,0.025);
+   color:                  rgba(255,255,255,0.6);
+}
+
+.footerDiv {
+   display:                flex;
+   flex-direction: 	      column;
+   align-items: 	         center;
+   justify-content: 	      center;
+}
+
+.contactsLine {
+   display:                flex;
+   flex-direction: 	      horizontal;
+   align-items: 	         center;
+   justify-content: 	      center;
+   gap:                    7px;
+}
+
+/*Super long pero dont worry abt it*/
+.asciiSpan1 {
+   color: 		rgba(255,205,255,1);
+}
+
+.asciiSpan2 {
+   color: 		rgba(255,195,255,1);
+}
+
+.asciiSpan3 {
+   color: 		rgba(255,185,255,1);
+}
+
+.asciiSpan4 {
+   color: 		rgba(255,175,255,1);
+}
+
+.asciiSpan5 {
+   color: 		rgba(255,165,255,1);
+}
+
+.asciiSpan6 {
+   color: 		rgba(255,155,255,1);
+}
+
+.asciiSpan7 {
+   color: 		rgba(255,145,255,1);
+}
+
+.asciiSpan8 {
+   color: 		rgba(255,135,255,1);
+}
+
+.asciiSpan9 {
+   color: 		rgba(255,125,255,1);
+}
