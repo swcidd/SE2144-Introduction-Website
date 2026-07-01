@@ -156,7 +156,7 @@ navButtons.forEach(({ button, page }) => {
 
   buttonElement.addEventListener("click", () => {
     if (button === "#press-start-button" && pressStartButton) {
-      playPressStartAudio();``
+      playPressStartAudio();
       pressStartButton.classList.remove("is-flashing");
       void pressStartButton.offsetWidth;
       pressStartButton.classList.add("is-flashing");
@@ -238,3 +238,30 @@ document.addEventListener("keydown", (event) => {
 
 setView(currentView);
 initializeCharacterHoverEffects();
+
+function openTab(event, Name) {
+  const tabcontent = document.getElementsByClassName("tabContent");
+  const tablinks = document.getElementsByClassName("tablinks");
+
+  for (let i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  for (let i = 0; i < tablinks.length; i++) {
+    tablinks[i].classList.remove("active");
+  }
+
+  const currentTab = document.getElementById(Name);
+  currentTab.style.display = "block";
+
+  currentTab.style.animation = "none";
+  currentTab.offsetHeight; // Force reflow
+  currentTab.style.animation = "tabSlide 0.25s ease-out";
+
+  event.currentTarget.classList.add("active");
+}
+const firstTabButton = document.querySelector(".tablinks");
+
+if (firstTabButton) {
+  firstTabButton.click();
+}
