@@ -161,11 +161,11 @@ navButtons.forEach(({ button, page }) => {
       }, PRESS_START_TO_CHARACTER_SELECT_DELAY_MS);
     }
 
-    const memberButton = buttonElement.querySelector(".members");
+    const memberButton = buttonElement.querySelector(".members"); //why
 
     if (memberButton) {
       playBannerClickAudio();
-      setCharacterSelection(memberButton);
+      //setCharacterSelection(memberButton);
     }
 
     if (viewSwitchTimeoutId !== null) {
@@ -179,6 +179,7 @@ navButtons.forEach(({ button, page }) => {
   });
 });
 
+//setting character selected
 function setCharacterSelection(activeButton) {
   characterButtons.forEach((button) => {
     const portrait = button.querySelector("img");
@@ -194,6 +195,26 @@ function setCharacterSelection(activeButton) {
   });
 }
 
+//hover shows selected art, hover-out reverts to unselected art
+function initializeCharacterHoverEffects() {
+  characterButtons.forEach((button) => {
+    const portrait = button.querySelector("img");
+
+    if (!portrait) return;
+
+    button.addEventListener("mouseenter", () => {
+      if (button.dataset.selectedSrc) {
+        portrait.src = button.dataset.selectedSrc;
+      }
+    });
+
+    button.addEventListener("mouseleave", () => {
+      portrait.src = button.dataset.unselectedSrc || TRANSPARENT_PIXEL;
+    });
+  });
+}
+
+//delayyy
 function getViewSwitchDelay(nextView) {
   return nextView === View.CHARACTER_SELECT
     ? PRESS_START_TO_CHARACTER_SELECT_DELAY_MS
@@ -209,3 +230,4 @@ document.addEventListener("keydown", (event) => {
 });
 
 setView(currentView);
+initializeCharacterHoverEffects();
