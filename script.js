@@ -147,11 +147,11 @@ function setView(viewName) {
 navButtons.forEach(({ button, page }) => {
   const buttonElement = document.querySelector(button);
 
-  if (!buttonElement) return; // akigan ta sini kun si sir paul pero its correct naman
+  if (!buttonElement) return; // akigan ta sini kun si sir paul pero its correct nazman
 
   buttonElement.addEventListener("click", () => {
     if (button === "#press-start-button" && pressStartButton) {
-      playPressStartAudio();
+      playPressStartAudio();``
       pressStartButton.classList.remove("is-flashing");
       void pressStartButton.offsetWidth;
       pressStartButton.classList.add("is-flashing");
