@@ -352,6 +352,18 @@ body {
   font-size: 30px;
 }
 
+@keyframes tabSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .tab button {
   background: none;
   border: none;
@@ -372,9 +384,112 @@ body {
 
 .tabContent {
   text-align: center;
+  margin-top: 40px;
   display: none;
   padding: 6px 12px;
   width:  700px;
   font-size: 25px;
   color: #2096F3;
+}
+
+.languages {
+    position: fixed;
+    top: 650px;
+    text-align: center;
+
+}
+
+.languages h2 {
+    color: #2096F3;
+    font-size: 30px;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+.skills_list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    gap: 20px;
+}
+
+.skill {
+    padding: 18px 0;
+    width: 150px;
+    text-align: center;
+
+    background: #2A3550;
+    border: 1px solid #3A4A6A;
+    border-radius: 12px;
+
+    font-size: 20px;
+    font-weight: 500;
+
+    transition: all 0.25s ease;
+}
+
+.skill:hover {
+    transform: translateY(-5px);
+    border-color: #2096F3;
+    box-shadow: 0 8px 20px rgba(32, 150, 243, 0.25);
+}
+
+.python {
+    color: #FF3B30;
+
+}
+
+.python:hover {
+    background: #FF3B30;
+    color: white;
+}
+
+.typescript {
+    color: #FF9500;
+
+}
+
+.typescript:hover {
+    background: #FF9500;
+    color: white;
+}
+
+.html {
+    color: #FFD60A;
+
+}
+
+.html:hover {
+    background: #FFD60A;
+    color: black;
+}
+
+.css {
+    color: #34C759;
+
+}
+
+.css:hover {
+    background: #34C759;
+    color: white;
+}
+
+.godot {
+    color: #0A84FF;
+
+}
+
+.godot:hover {
+    background: #0A84FF;
+    color: white;
+}
+
+.javascript {
+    color: #AF52DE;
+
+}
+
+.javascript:hover {
+    background: #AF52DE;
+    color: white;
 }

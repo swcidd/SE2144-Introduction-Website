@@ -211,24 +211,29 @@ document.addEventListener("keydown", (event) => {
 setView(currentView);
 
 function openTab(event, Name) {
-  var i, tabcontent, tablinks;
+    const tabcontent = document.getElementsByClassName("tabContent");
+    const tablinks = document.getElementsByClassName("tablinks");
 
-  tabcontent = document.getElementsByClassName("tabContent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
+    for (let i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
 
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
+    for (let i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+    }
 
-  document.getElementById(Name).style.display = "block";
-  event.currentTarget.className += " active";
+
+    const currentTab = document.getElementById(Name);
+    currentTab.style.display = "block";
+
+    currentTab.style.animation = "none";
+    currentTab.offsetHeight; // Force reflow
+    currentTab.style.animation = "tabSlide 0.25s ease-out";
+
+    event.currentTarget.classList.add("active");
 }
-
 const firstTabButton = document.querySelector(".tablinks");
 
 if (firstTabButton) {
-  firstTabButton.click();
+    firstTabButton.click();
 }
