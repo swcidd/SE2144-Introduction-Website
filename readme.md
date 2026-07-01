@@ -2,7 +2,7 @@
 
 ## Description
 
-This project is a team introduction website for SE2144. It showcases each member’s personal portfolio page with an interactive landing page that lets visitors choose a character/member and explore their profile.
+An interactive team introduction website for SE2144 featuring a landing page and individual portfolio pages for each member. Designed to mimic the feel of fighting games, where each portfolio feels like a character you choose.
 
 ## Installation
 
