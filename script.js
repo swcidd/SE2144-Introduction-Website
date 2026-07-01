@@ -147,7 +147,7 @@ function setView(viewName) {
 navButtons.forEach(({ button, page }) => {
   const buttonElement = document.querySelector(button);
 
-  if (!buttonElement) return; // akigan ta sini kun si sir paul pero its correct naman
+  if (!buttonElement) return; // akigan ta sini kun si sir paul pero its correct nazman
 
   buttonElement.addEventListener("click", () => {
     if (button === "#press-start-button" && pressStartButton) {
@@ -161,11 +161,11 @@ navButtons.forEach(({ button, page }) => {
       }, PRESS_START_TO_CHARACTER_SELECT_DELAY_MS);
     }
 
-    const memberButton = buttonElement.querySelector(".members");
+    const memberButton = buttonElement.querySelector(".members"); //why
 
     if (memberButton) {
       playBannerClickAudio();
-      setCharacterSelection(memberButton);
+      //setCharacterSelection(memberButton);
     }
 
     if (viewSwitchTimeoutId !== null) {
@@ -179,6 +179,7 @@ navButtons.forEach(({ button, page }) => {
   });
 });
 
+//setting character selected
 function setCharacterSelection(activeButton) {
   characterButtons.forEach((button) => {
     const portrait = button.querySelector("img");
@@ -194,6 +195,26 @@ function setCharacterSelection(activeButton) {
   });
 }
 
+//hover shows selected art, hover-out reverts to unselected art
+function initializeCharacterHoverEffects() {
+  characterButtons.forEach((button) => {
+    const portrait = button.querySelector("img");
+
+    if (!portrait) return;
+
+    button.addEventListener("mouseenter", () => {
+      if (button.dataset.selectedSrc) {
+        portrait.src = button.dataset.selectedSrc;
+      }
+    });
+
+    button.addEventListener("mouseleave", () => {
+      portrait.src = button.dataset.unselectedSrc || TRANSPARENT_PIXEL;
+    });
+  });
+}
+
+//delayyy
 function getViewSwitchDelay(nextView) {
   return nextView === View.CHARACTER_SELECT
     ? PRESS_START_TO_CHARACTER_SELECT_DELAY_MS
@@ -211,29 +232,28 @@ document.addEventListener("keydown", (event) => {
 setView(currentView);
 
 function openTab(event, Name) {
-    const tabcontent = document.getElementsByClassName("tabContent");
-    const tablinks = document.getElementsByClassName("tablinks");
+  const tabcontent = document.getElementsByClassName("tabContent");
+  const tablinks = document.getElementsByClassName("tablinks");
 
-    for (let i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
+  for (let i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
 
-    for (let i = 0; i < tablinks.length; i++) {
-        tablinks[i].classList.remove("active");
-    }
+  for (let i = 0; i < tablinks.length; i++) {
+    tablinks[i].classList.remove("active");
+  }
 
+  const currentTab = document.getElementById(Name);
+  currentTab.style.display = "block";
 
-    const currentTab = document.getElementById(Name);
-    currentTab.style.display = "block";
+  currentTab.style.animation = "none";
+  currentTab.offsetHeight; // Force reflow
+  currentTab.style.animation = "tabSlide 0.25s ease-out";
 
-    currentTab.style.animation = "none";
-    currentTab.offsetHeight; // Force reflow
-    currentTab.style.animation = "tabSlide 0.25s ease-out";
-
-    event.currentTarget.classList.add("active");
+  event.currentTarget.classList.add("active");
 }
 const firstTabButton = document.querySelector(".tablinks");
 
 if (firstTabButton) {
-    firstTabButton.click();
+  firstTabButton.click();
 }
