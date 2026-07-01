@@ -29,7 +29,8 @@ const CHARACTER_SELECT_INTRO_DURATION_MS = 1100;
 const TRANSPARENT_PIXEL =
   "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
 const PRESS_START_AUDIO_SRC = "src/assets/audio/GAME_SE_23.mp3";
-const BANNER_CLICK_AUDIO_SRC = "src/assets/audio/GAME_SE_08.mp3";
+const CHARACTER_SELECT_HOVER_AUDIO_SRC = "src/assets/audio/GAME_SE_08.mp3";
+const CHARACTER_SELECT_CLICK_AUDIO_SRC = "src/assets/audio/GAME_SE_00.mp3";
 const CHARACTER_SELECT_AUDIO_SRC =
   "src/assets/audio/Street Fighter X Tekken Main Menu OST_compressed.mp3";
 
@@ -53,8 +54,12 @@ function playPressStartAudio() {
   playOneShotSound(PRESS_START_AUDIO_SRC);
 }
 
-function playBannerClickAudio() {
-  playOneShotSound(BANNER_CLICK_AUDIO_SRC);
+function playCharacterSelectHoverAudio() {
+  playOneShotSound(CHARACTER_SELECT_HOVER_AUDIO_SRC);
+}
+
+function playCharacterSelectClickAudio() {
+  playOneShotSound(CHARACTER_SELECT_CLICK_AUDIO_SRC);
 }
 
 function getCharacterSelectAudio() {
@@ -161,11 +166,11 @@ navButtons.forEach(({ button, page }) => {
       }, PRESS_START_TO_CHARACTER_SELECT_DELAY_MS);
     }
 
-    const memberButton = buttonElement.querySelector(".members");
+    const memberButton = buttonElement.querySelector(".members"); //why
 
     if (memberButton) {
-      playBannerClickAudio();
-      setCharacterSelection(memberButton);
+      playCharacterSelectClickAudio();
+      //setCharacterSelection(memberButton);
     }
 
     if (viewSwitchTimeoutId !== null) {
@@ -179,6 +184,7 @@ navButtons.forEach(({ button, page }) => {
   });
 });
 
+//setting character selected
 function setCharacterSelection(activeButton) {
   characterButtons.forEach((button) => {
     const portrait = button.querySelector("img");
@@ -194,6 +200,28 @@ function setCharacterSelection(activeButton) {
   });
 }
 
+//hover shows selected art, hover-out reverts to unselected art
+function initializeCharacterHoverEffects() {
+  characterButtons.forEach((button) => {
+    const portrait = button.querySelector("img");
+
+    if (!portrait) return;
+
+    button.addEventListener("mouseenter", () => {
+      playCharacterSelectHoverAudio();
+
+      if (button.dataset.selectedSrc) {
+        portrait.src = button.dataset.selectedSrc;
+      }
+    });
+
+    button.addEventListener("mouseleave", () => {
+      portrait.src = button.dataset.unselectedSrc || TRANSPARENT_PIXEL;
+    });
+  });
+}
+
+//delayyy
 function getViewSwitchDelay(nextView) {
   return nextView === View.CHARACTER_SELECT
     ? PRESS_START_TO_CHARACTER_SELECT_DELAY_MS
@@ -209,31 +237,4 @@ document.addEventListener("keydown", (event) => {
 });
 
 setView(currentView);
-
-function openTab(event, Name) {
-    const tabcontent = document.getElementsByClassName("tabContent");
-    const tablinks = document.getElementsByClassName("tablinks");
-
-    for (let i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-
-    for (let i = 0; i < tablinks.length; i++) {
-        tablinks[i].classList.remove("active");
-    }
-
-
-    const currentTab = document.getElementById(Name);
-    currentTab.style.display = "block";
-
-    currentTab.style.animation = "none";
-    currentTab.offsetHeight; // Force reflow
-    currentTab.style.animation = "tabSlide 0.25s ease-out";
-
-    event.currentTarget.classList.add("active");
-}
-const firstTabButton = document.querySelector(".tablinks");
-
-if (firstTabButton) {
-    firstTabButton.click();
-}
+initializeCharacterHoverEffects();
