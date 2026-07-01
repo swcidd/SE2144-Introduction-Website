@@ -153,8 +153,15 @@ body.sherwin-page {
 }
 
 .hobby-card.media-card {
-  padding: 0.5rem;
+  padding: 0;
   overflow: hidden;
+}
+
+.media-card-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  align-items: stretch;
 }
 
 .hobby-card.media-card-goku {
@@ -171,29 +178,27 @@ body.sherwin-page {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  border-radius: 0.85rem;
+  border-radius: inherit;
 }
 
 .hobby-card.media-card-duo {
-  padding: 0.5rem;
+  padding: 0;
 }
 
-.media-card-duo-stack {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.5rem;
+.hobby-card.media-card-single {
+  display: flex;
   align-items: stretch;
+  padding: 0;
+  overflow: hidden;
 }
 
-.media-card-duo-stack img {
+.hobby-card.media-card-single img {
   display: block;
   width: 100%;
   height: 100%;
-  min-height: 96px;
-  max-height: 160px;
   object-fit: cover;
   object-position: center;
-  border-radius: 0.7rem;
+  border-radius: inherit;
 }
 
 .hobby-card h3,
@@ -332,6 +337,10 @@ body.sherwin-page {
   .portfolio-hero,
   .portfolio-grid,
   .skill-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .media-card-row {
     grid-template-columns: 1fr;
   }
 
