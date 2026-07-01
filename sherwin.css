@@ -37,6 +37,8 @@ body.sherwin-page {
   align-items: center;
   padding: 1.25rem;
   margin-bottom: 1.25rem;
+  border-radius: 1rem;
+  overflow: hidden;
 }
 
 .hero-media {
