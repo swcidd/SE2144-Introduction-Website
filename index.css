@@ -289,3 +289,24 @@ body {
   transform: translateX(1.4rem) scale(1.03);
   filter: brightness(1.08) saturate(1.08);
 }
+
+/* PORTFOLIO SECTIONS */
+#joseph-portfolio,
+#sherwin-portfolio,
+#xanth-portfolio {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#joseph-portfolio h1,
+#sherwin-portfolio h1,
+#xanth-portfolio h1 {
+  font-size: 3rem;
+  color: white;
+}
+
