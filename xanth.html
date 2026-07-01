@@ -2,8 +2,55 @@
 <html>
   <head>
     <title>Xanth's Portfolio</title>
+    <link rel="stylesheet" href="xanth.css" />
+    <script src="script.js" defer></script>
   </head>
-  <body>
-    <p>Test</>
-  <body>
+
+  <body class="xanth-portfolio-body">
+    <header>
+      <h1>Xanth</h1>
+      <p>Software Engineering Student</p>
+    </header>
+
+    <div class="tab">
+      <button class="tablinks" onclick="openTab(event, 'About_me')">About me</button>
+      <button class="tablinks" onclick="openTab(event, 'Hobbies')">Hobbies</button>
+      <button class="tablinks" onclick="openTab(event, 'Insights')">Insights</button>
+    </div>
+
+    
+    <div id="About_me" class="tabContent">
+      <p>
+        I'm Xanth Reign Palmes, a B.S. Software Engineering student at Central Philippine University. 
+      </p>
+    </div>
+
+    <div id="Hobbies" class="tabContent">
+      <p>Started playing drums a long time ago until i decided to try an old acoustic we had lying around, 
+        currently a self taught guitarist specializing in percussive fingersyle. Other than that, i enjoy 
+        collecting and making mechanical keyboards (got 5 so far) and sim racing.
+      </p>
+    </div>
+
+    <div id="Insights" class="tabContent">
+      <p>I've found that time management and discipline are the two most important aspects to thrive. 
+        Sure the schedule and workloads are tough, but even just an hour of planned study time 
+        can make a massive difference.</p>
+    </div>
+
+    <section class="languages">
+      <h2>---skills---</h2>
+
+      <div class="skills_list">
+        <div class="skill python">Python</div>
+        <div class="skill typescript">Typescript</div>
+        <div class="skill html">HTML</div>
+        <div class="skill css">CSS</div>
+        <div class="skill godot">GODOT</div>
+        <div class="skill javascript">Javascript</div>
+      </div>
+    </section>
+
+
+  </body>
 </html>
