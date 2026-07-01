@@ -210,4 +210,25 @@ document.addEventListener("keydown", (event) => {
 
 setView(currentView);
 
+function openTab(event, Name) {
+  var i, tabcontent, tablinks;
 
+  tabcontent = document.getElementsByClassName("tabContent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  document.getElementById(Name).style.display = "block";
+  event.currentTarget.className += " active";
+}
+
+const firstTabButton = document.querySelector(".tablinks");
+
+if (firstTabButton) {
+  firstTabButton.click();
+}

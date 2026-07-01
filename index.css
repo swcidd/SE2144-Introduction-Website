@@ -316,32 +316,46 @@ body {
 .xanth-portfolio-body {
   background-color: #1A2238;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   min-height: 100vh;
 }
 
+.xanth-portfolio-body header {
+  margin-bottom: 100px;
+}
+
 .xanth-portfolio-body h1 {
   color: #2096F3;
-  font-size: 150px;
+  font-size: 200px;
+  font-weight: 700;
+  font-family: Helvetica;
+  text-align: center;
+}
+
+.xanth-portfolio-body p {
+  color: #2096F3;
+  font-size: 30px;
   font-family: Helvetica;
   text-align: center;
 }
 
 .tab {
+  display: flex;
+  gap: 24px;
   overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
+  border: none;
+  background-color: #1A2238;
 }
 
 .tab button {
-  background-color: inherit;
-  float: left;
+  background: none;
   border: none;
-  outline: none;
+  color: #2096F3;
+  font: inherit;
   cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
+  padding: 0;
 }
 
 .tab button:hover {
@@ -349,12 +363,12 @@ body {
 }
 
 .tab button.active {
-  background-color: #ccc;
+  background-color: #ffffff;
 }
 
-.tabcontent {
+.tabContent {
   display: none;
   padding: 6px 12px;
-  border: 1px solid #ccc;
+  border: 1px solid #fdfdfd;
   border-top: none;
 }
